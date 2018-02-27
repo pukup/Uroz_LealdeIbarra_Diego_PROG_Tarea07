@@ -11,6 +11,8 @@ package alquilervehiculos.mvc.modelo.dominio.vehiculo;
  */
 public class Autobus extends Vehiculo {
 
+    private static final long serialVersionUID = 1L;
+        
     public Autobus(String matricula, String marca, String modelo, int cilindrada, int numeroPlazas, int pma) {
         super(matricula, marca, modelo, new DatosTecnicosVehiculo(cilindrada, numeroPlazas, pma));
     }

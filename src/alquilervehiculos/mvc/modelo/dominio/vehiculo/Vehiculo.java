@@ -6,15 +6,17 @@
 package alquilervehiculos.mvc.modelo.dominio.vehiculo;
 
 import alquilervehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
+import java.io.Serializable;
 import java.util.regex.*;
 
 /**
  *
  * @author lol
  */
-public abstract class Vehiculo {
+public abstract class Vehiculo implements Serializable {
 
 //Atributos clase
+    private static final long serialVersionUID = 1L;
     private String matricula, marca, modelo;
     private DatosTecnicosVehiculo datosTecnicos;
     private boolean disponible;
