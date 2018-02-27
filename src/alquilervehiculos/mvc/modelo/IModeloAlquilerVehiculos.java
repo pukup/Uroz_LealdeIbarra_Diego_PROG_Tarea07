@@ -19,8 +19,6 @@ public interface IModeloAlquilerVehiculos {
 
     void anadirCliente(Cliente cliente);
 
-    void anadirDatosPrueba();
-
     void anadirVehiculo(Vehiculo vehiculo);
 
     void borrarCliente(String dni);

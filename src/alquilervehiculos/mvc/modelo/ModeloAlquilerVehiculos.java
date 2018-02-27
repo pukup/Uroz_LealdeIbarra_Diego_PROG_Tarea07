@@ -10,9 +10,6 @@ import alquilervehiculos.mvc.modelo.dao.Clientes;
 import alquilervehiculos.mvc.modelo.dao.Vehiculos;
 import alquilervehiculos.mvc.modelo.dominio.Alquiler;
 import alquilervehiculos.mvc.modelo.dominio.Cliente;
-import alquilervehiculos.mvc.modelo.dominio.DireccionPostal;
-import alquilervehiculos.mvc.modelo.dominio.vehiculo.Autobus;
-import alquilervehiculos.mvc.modelo.dominio.vehiculo.Turismo;
 import alquilervehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 
 /**
@@ -86,23 +83,5 @@ public class ModeloAlquilerVehiculos implements IModeloAlquilerVehiculos {
     public Alquiler[] obtenerAlquileres() {
         return alquileres.getAlquileres();
     }
-
-    @Override
-    public void anadirDatosPrueba() {
-        Cliente cliente0 = new Cliente("a", "00000000A", new DireccionPostal("a", "a", "00000"));
-        Cliente cliente1 = new Cliente("z", "99999999Z", new DireccionPostal("z", "z", "00000"));
-
-        Vehiculo turismo0 = new Turismo("0000BBB", "B", "B", 1, 1, 1);
-        Vehiculo turismo1 = new Autobus("9999ZZZ", "Z", "Z", 500, 500, 500);
-
-        anadirCliente(cliente0);
-        anadirCliente(cliente1);
-
-        anadirVehiculo(turismo0);
-        anadirVehiculo(turismo1);
-        
-        abrirAlquiler(cliente0, turismo0);
-        abrirAlquiler(cliente1, turismo1);
-        
-    }
+    
 }
