@@ -5,6 +5,7 @@
  */
 package alquilervehiculos.mvc.modelo.dominio;
 
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,9 +13,10 @@ import java.util.regex.Pattern;
  *
  * @author lol
  */
-public class Cliente {
+public class Cliente implements Serializable {
 
 // Atributos para la clase
+    private static final long serialVersionUID = 1L;
     private String nombre, dni;
     private DireccionPostal direccion;
     private int identificador;
@@ -36,8 +38,16 @@ public class Cliente {
         nombre = clienteCopia.getNombre();
         direccion = clienteCopia.getDireccion();
         dni = clienteCopia.getDni();
-        alquilerVigente=clienteCopia.getAlquilerVigente();
+        alquilerVigente = clienteCopia.getAlquilerVigente();
         identificador = clienteCopia.getIdentificador();
+    }
+
+    public static void aumentarUltimoIdentificador(int cantidad) {
+        if (cantidad > 0) {
+            ultimoIdentificador += cantidad;
+        } else {
+            throw new ExcepcionAlquilerVehiculos("Sólo puedo aumentar el último identificador");
+        }
     }
 
 //Métodos set    
@@ -57,12 +67,12 @@ public class Cliente {
         }
     }
 
-    private void setDireccionPostal(DireccionPostal direccion) {        
-            this.direccion = new DireccionPostal(direccion);       
+    private void setDireccionPostal(DireccionPostal direccion) {
+        this.direccion = new DireccionPostal(direccion);
     }
-    
-    public void setAlquilerVigente(boolean alquilerVigente){
-        this.alquilerVigente=alquilerVigente;
+
+    public void setAlquilerVigente(boolean alquilerVigente) {
+        this.alquilerVigente = alquilerVigente;
     }
 
 //Métodos get   
@@ -85,8 +95,8 @@ public class Cliente {
     public int getUltimoIdentificador() {
         return ultimoIdentificador;
     }
-    
-    public boolean getAlquilerVigente(){
+
+    public boolean getAlquilerVigente() {
         return alquilerVigente;
     }
 
