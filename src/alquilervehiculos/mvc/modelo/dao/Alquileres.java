@@ -9,6 +9,13 @@ import alquilervehiculos.mvc.modelo.dominio.Alquiler;
 import alquilervehiculos.mvc.modelo.dominio.Cliente;
 import alquilervehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 import alquilervehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -18,6 +25,7 @@ public class Alquileres {
 
     private final int MAX_ALQUILERES = 20;
     private Alquiler[] alquileres;
+    private final String FICHERO_ALQUILERES = "datos/alquileres.dat";
 
     public Alquileres() {
         alquileres = new Alquiler[MAX_ALQUILERES];
@@ -25,6 +33,38 @@ public class Alquileres {
 
     public Alquiler[] getAlquileres() {
         return alquileres.clone();
+    }
+
+    public void leerAlquielres() {
+        File fichero = new File(FICHERO_ALQUILERES);
+        ObjectInputStream entrada;
+        try {
+            entrada = new ObjectInputStream(new FileInputStream(fichero));
+            try {
+                alquileres = (Alquiler[]) entrada.readObject();
+                entrada.close();
+                System.out.println("Fichero alauileres leido.");
+            } catch (ClassNotFoundException e) {
+                System.out.println("Clase no encontrada.");
+            } catch (IOException e) {
+                System.out.println("Error I/O");
+            }
+        } catch (IOException e) {
+            System.out.println("No puede abrirse el fichero.");
+        }
+    }
+    
+    public void escribirAlquileres() {
+        File fichero = new File(FICHERO_ALQUILERES);
+        try {
+            ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(fichero));
+            salida.close();
+            System.out.println("Fichero escrito correctamente.");
+        } catch (FileNotFoundException e) {
+            System.out.println("Fichero no encontrado.");
+        } catch (IOException e) {
+            System.out.println("Error IO.");
+        }
     }
 
     public void abrir(Cliente cliente, Vehiculo vehiculo) {
@@ -69,7 +109,7 @@ public class Alquileres {
         int indice = 0;
         boolean alquilerEncontrado = false;
         while (indiceNoSuperaTamano(indice) && !alquilerEncontrado) {
-            if (alquileres[indice] != null && alquileres[indice].getVehiculo().getMatricula().equals(vehiculo.getMatricula()) && alquileres[indice].getEstadoAlquiler()=="ABIERTO") {
+            if (alquileres[indice] != null && alquileres[indice].getVehiculo().getMatricula().equals(vehiculo.getMatricula()) && alquileres[indice].getEstadoAlquiler() == "ABIERTO") {
                 alquilerEncontrado = true;
             } else {
                 indice++;

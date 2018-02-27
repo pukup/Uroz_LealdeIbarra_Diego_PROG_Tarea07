@@ -6,6 +6,7 @@
 package alquilervehiculos.mvc.modelo.dominio;
 
 import alquilervehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -13,9 +14,10 @@ import java.util.Date;
  *
  * @author lol
  */
-public class Alquiler {
+public class Alquiler implements Serializable {
 
 //Atributos    
+    private static final long serialVersionUID = 1L;
     private Date fecha;
     private int dias;
     private boolean alquilerAbierto;
