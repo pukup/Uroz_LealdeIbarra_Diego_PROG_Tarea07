@@ -32,6 +32,8 @@ public interface IControladorAlquilerVehiculos {
     void cerrarAlquiler(Vehiculo turismo);
 
     void comenzar();
+    
+    void salir();
 
     Alquiler[] obtenerAlquileres();
 

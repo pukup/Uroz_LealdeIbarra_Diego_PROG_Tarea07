@@ -28,9 +28,18 @@ public class ControladorAlquilerVehiculos implements IControladorAlquilerVehicul
 
     @Override
     public void comenzar() {
+        modelo.leerClientes();
+        modelo.leerVehiculos();
+        modelo.leerAlquileres();
         vista.comenzar();
     }
 
+    public void salir() {
+        modelo.escribirClientes();
+        modelo.escribirVehiculos();
+        modelo.escribirAlquileres();
+    }
+    
     @Override
     public void anadirCliente(Cliente cliente) {
         modelo.anadirCliente(cliente);

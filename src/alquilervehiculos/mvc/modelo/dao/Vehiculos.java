@@ -43,12 +43,12 @@ public class Vehiculos {
                 entrada.close();
                 System.out.println("Fichero vehiculos lectura correcta.");
             } catch (ClassNotFoundException e) {
-                System.out.println("Clase no encontrada.");
+                System.out.println("Fichero vehiculos no encontrado.");
             } catch (IOException e) {
-                System.out.println("Error I/O");
+                System.out.println("Error I/O vehiculos.");
             }
         } catch (IOException e) {
-            System.out.println("Fichero no puede abrirse.");
+            System.out.println("Fichero vehiculos no puede abrirse.");
         }
     }
 
@@ -56,6 +56,7 @@ public class Vehiculos {
         File fichero = new File(FICHERO_VEHICULOS);
         try {
             ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(fichero));
+            salida.writeObject(vehiculos);
             salida.close();
             System.out.println("Fichero vehículos escritura correcta.");
         } catch (FileNotFoundException e) {

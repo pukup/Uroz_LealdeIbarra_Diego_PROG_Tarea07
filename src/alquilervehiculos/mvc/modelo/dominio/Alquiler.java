@@ -33,6 +33,7 @@ public class Alquiler implements Serializable {
             alquilerAbierto = true;
             setVehiculo(vehiculo);
             setCliente(cliente);
+            vehiculo.setDisponible(false);
             fecha = new Date();
             dias = 0;               
         } else {
@@ -51,8 +52,7 @@ public class Alquiler implements Serializable {
 
     private void setVehiculo(Vehiculo vehiculo) {
         if (vehiculo != null) {
-            this.vehiculo = vehiculo;
-            vehiculo.setDisponible(false);
+            this.vehiculo = vehiculo;            
         } else {
             throw new ExcepcionAlquilerVehiculos("Error turismo.");
         }

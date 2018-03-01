@@ -36,5 +36,16 @@ public interface IModeloAlquilerVehiculos {
     Cliente[] obtenerClientes();
 
     Vehiculo[] obtenerVehiculos();
-    
+
+    void leerClientes();
+
+    void escribirClientes();
+
+    void leerVehiculos();
+
+    void escribirVehiculos();
+
+    void leerAlquileres();
+
+    void escribirAlquileres();
 }

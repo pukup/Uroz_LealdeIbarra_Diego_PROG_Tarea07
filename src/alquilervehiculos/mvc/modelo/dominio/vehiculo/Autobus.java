@@ -5,6 +5,8 @@
  */
 package alquilervehiculos.mvc.modelo.dominio.vehiculo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author lol

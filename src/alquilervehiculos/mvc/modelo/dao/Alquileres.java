@@ -43,27 +43,28 @@ public class Alquileres {
             try {
                 alquileres = (Alquiler[]) entrada.readObject();
                 entrada.close();
-                System.out.println("Fichero alauileres leido.");
+                System.out.println("Fichero alquileres leido.");
             } catch (ClassNotFoundException e) {
                 System.out.println("Clase no encontrada.");
             } catch (IOException e) {
-                System.out.println("Error I/O");
+                System.out.println("Error I/O alquileres");
             }
         } catch (IOException e) {
-            System.out.println("No puede abrirse el fichero.");
+            System.out.println("No puede abrirse el fichero alquileres.");
         }
     }
-    
+
     public void escribirAlquileres() {
         File fichero = new File(FICHERO_ALQUILERES);
         try {
             ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(fichero));
+            salida.writeObject(alquileres);
             salida.close();
-            System.out.println("Fichero escrito correctamente.");
+            System.out.println("Fichero alquieleres escrito correctamente.");
         } catch (FileNotFoundException e) {
-            System.out.println("Fichero no encontrado.");
+            System.out.println("Fichero alquileres no encontrado.");
         } catch (IOException e) {
-            System.out.println("Error IO.");
+            System.out.println("Error IO alquileres.");
         }
     }
 

@@ -44,12 +44,12 @@ public class Clientes {
                 System.out.println("Fichero clientes leído satisfactoriamente.");
                 Cliente.aumentarUltimoIdentificador(calcularUltimoIdentificador());
             } catch (ClassNotFoundException e) {
-                System.out.println("Clase no encontrada.");
+                System.out.println("Fichero clientes no encontrado.");
             } catch (IOException e) {
-                System.out.println("Error I/O");
+                System.out.println("Error I/O clientes");
             }
         } catch (IOException e) {
-            System.out.println("No se puede abrir el fichero.");
+            System.out.println("No se puede abrir el fichero clientes.");
         }
     }
 
@@ -57,13 +57,13 @@ public class Clientes {
         File fichero = new File(FICHERO_CLIENTES);
         try {
             ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(fichero));
-            salida.writeObject((Cliente[]) clientes);
+            salida.writeObject(clientes);
             salida.close();
             System.out.println("Fichero clientes escrito satisfactoriamente.");
         } catch (FileNotFoundException e) {
-            System.out.println("No puedo crear el fichero de clientes");
+            System.out.println("No se pudo crear el fichero de clientes");
         } catch (IOException e) {
-            System.out.println("Error inesperado de Entrada/Salida");
+            System.out.println("Error IO fichero Clientes");
         }
     }
 
@@ -72,8 +72,9 @@ public class Clientes {
         int i = 0;
         while (clientes[i] != null) {
             if (clientes[i].getIdentificador() > ultimoIdentificador) {
-                ultimoIdentificador = clientes[i].getIdentificador();
-            }
+                ultimoIdentificador = clientes[i].getIdentificador();                
+            }            
+        i++;
         }
         return ultimoIdentificador;
     }

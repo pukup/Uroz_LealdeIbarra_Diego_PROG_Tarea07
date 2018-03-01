@@ -42,7 +42,8 @@ public class IUTextual implements IVistaAlquilerVehiculos {
     }
 
     @Override
-    public void salir() {
+    public void salir() {        
+        controlador.salir();
         System.out.println("Nos vemos en la tele.");
     }
 
